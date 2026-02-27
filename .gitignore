@@ -1,0 +1,34 @@
+# ===== Maven =====
+target/
+
+# ===== Eclipse =====
+.project
+.classpath
+.settings/
+test-output/
+
+# ===== Compiled =====
+*.class
+*.jar
+
+# ===== Logs =====
+*.log
+!automation.log
+/traces
+*.zip
+
+# ===== Allure =====
+allure-results/
+allure-report/
+.allure/
+
+# ===== Playwright =====
+playwright-report/
+test-results/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# JUnit reports (if any)
+surefire-reports/
