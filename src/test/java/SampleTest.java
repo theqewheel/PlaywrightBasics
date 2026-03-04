@@ -9,7 +9,7 @@ import com.microsoft.playwright.Playwright;
  * =======================================================================================================================
  *                                                          SAMPLE TOPIC
  * =======================================================================================================================
- * Official Docs - https://playwright.dev/java/docs/dialogs
+ * Official Doc - https://playwright.dev/java/docs/dialogs
  * 
  */
 
