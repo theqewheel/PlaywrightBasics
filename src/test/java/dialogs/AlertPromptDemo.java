@@ -5,19 +5,17 @@ import java.util.regex.Pattern;
 import org.testng.Assert;
 
 import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.BrowserType.LaunchOptions;
-import com.microsoft.playwright.assertions.PlaywrightAssertions;
-import com.microsoft.playwright.Dialog;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import com.microsoft.playwright.options.AriaRole;
 
 /**
  * =======================================================================================================================
  * ALERTS
  * =======================================================================================================================
- * Official Docs - https://playwright.dev/java/docs/dialogs
+ * Official Doc - https://playwright.dev/java/docs/dialogs
  * 
  * Web Dialogs can be of three types - alert, confirm, prompt
  * 
@@ -36,7 +34,7 @@ import com.microsoft.playwright.options.AriaRole;
  * act on the same alert.
  * 
  * Sometimes the alert pop up is shown on the browser and sometimes not.
- * Thats expected behaviour as Playwright runs fast and process it like 
+ * Thats expected behavior as Playwright runs fast and process it like 
  */
 
 public class AlertPromptDemo {

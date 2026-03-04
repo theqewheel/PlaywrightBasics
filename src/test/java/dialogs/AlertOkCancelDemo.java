@@ -5,12 +5,10 @@ import java.util.regex.Pattern;
 import org.testng.Assert;
 
 import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.BrowserType.LaunchOptions;
-import com.microsoft.playwright.assertions.PlaywrightAssertions;
-import com.microsoft.playwright.Dialog;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import com.microsoft.playwright.options.AriaRole;
 
 /**
@@ -29,7 +27,8 @@ import com.microsoft.playwright.options.AriaRole;
  * (clicks Cancel button) prompt and accept/dismiss (enters input and clicks
  * Ok/Cancel button)
  * 
- * Page.onDialog listener should handle the dialog, else the subsequent actions
+ * Page.onDialog listener should handle the dial
+ * og, else the subsequent actions
  * will fail.
  * 
  * You should have only single handler on a method else all handlers will try to
@@ -69,7 +68,7 @@ public class AlertOkCancelDemo {
 
 		page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName(Pattern.compile("confirm"))).click();
 
-		// This will work if placed after the action which invokes the alert because
+		// This will not work if placed after the action which invokes the alert because
 		// playwright auto dismisses the alerts appearing
 
 		/*

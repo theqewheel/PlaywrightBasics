@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 import org.testng.Assert;
 
 import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.BrowserType.LaunchOptions;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
@@ -15,7 +14,7 @@ import com.microsoft.playwright.options.AriaRole;
  * =======================================================================================================================
  * ALERTS
  * =======================================================================================================================
- * Official Docs - https://playwright.dev/java/docs/dialogs
+ * Official Doc - https://playwright.dev/java/docs/dialogs
  * 
  * Web Dialogs can be of three types - alert, confirm, prompt
  * 
