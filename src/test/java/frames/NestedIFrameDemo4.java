@@ -23,7 +23,7 @@ import com.microsoft.playwright.options.AriaRole;
  * 									. URL
  */
 
-public class NestedIFrameDemo1 {
+public class NestedIFrameDemo4 {
 
 public static void main(String[] args) {
 		
