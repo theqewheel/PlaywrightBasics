@@ -3,9 +3,8 @@ package overlays;
 import java.util.Arrays;
 
 import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType.LaunchOptions;
-import com.microsoft.playwright.Frame;
-import com.microsoft.playwright.FrameLocator;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
@@ -13,9 +12,12 @@ import com.microsoft.playwright.options.AriaRole;
 
 /**
  * =======================================================================================================================
- * Overlays
+ * 													OVERLAYS
  * =======================================================================================================================
- * Official Doc - https://playwright.dev/java/docs/dialogs
+ * Official Doc - https://playwright.dev/java/docs/api/class-elementhandle#element-handle-hover
+ * 
+ * Overlays can come various formats :
+ * 			- Overlays that come on hovering on an element , the overlay is another html div visible only on hover of another element
  * 
  */
 
@@ -33,13 +35,20 @@ public class HoverOverlayDemo {
 				.setSlowMo(1000)
 				.setHeadless(false)
 				.setArgs(Arrays.asList("--disable-features=IsolateOrigins,site-per-process")));
-		page = browser.newPage();
+		BrowserContext context = browser.newContext();
+		
+		bypassGoogleVignetteAds(context);
+		
+		page = context.newPage();
 		page.navigate(url);
 
 		/*
 		 * demo - actions
 		 */
 
+	    // Advertisement iframe handler
+		page.route("**/*ads*", route -> route.abort());
+	    
 		page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Women")).click();
 		page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Dress")).click();
 		
@@ -72,5 +81,20 @@ public class HoverOverlayDemo {
 	}
 	
 	
+	public static void bypassGoogleVignetteAds(BrowserContext context) {
+		
+		context.route("**/*", route -> {
+		    String addUrls = route.request().url();
+
+		    if (addUrls.contains("doubleclick") ||
+		    	addUrls.contains("googlesyndication") ||
+		    	addUrls.contains("googleads") ||
+		    	addUrls.contains("adservice")) {
+		        route.abort();
+		    } else {
+		        route.resume();
+		    }
+		});
+	}
 
 }
