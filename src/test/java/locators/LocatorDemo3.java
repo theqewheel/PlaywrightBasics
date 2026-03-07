@@ -16,7 +16,7 @@ import com.microsoft.playwright.Playwright;
  * Official Doc - https://playwright.dev/java/docs/locators#locator-operators
  */
 
-public class LocatorDemo2 {
+public class LocatorDemo3 {
 
 public static void main(String[] args) {
 		

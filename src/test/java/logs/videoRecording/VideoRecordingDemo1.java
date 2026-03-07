@@ -1,45 +1,45 @@
-package popUps;
+package logs.videoRecording;
 
+import java.nio.file.Paths;
 import java.util.List;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
-import com.microsoft.playwright.BrowserType.LaunchOptions;
 import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.BrowserType.LaunchOptions;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
 /**
  * =======================================================================================================================
- * POP-UP WINDOWS
+ * SAMPLE TOPIC
  * =======================================================================================================================
- * Official Doc - https://playwright.dev/java/docs/pages#pages
+ * Official Doc - https://playwright.dev/java/docs/videos#record-video
  * 
- * The Page events on the browser can be used to get new pages that are created
- * on the browser context - Get Page after a specific action - if the action is
- * unknown for triggering a new page The Popups - when a new blank tab opens up
- * to a new window - when a new window opens up separately - when multiple new
- * windows open up separately
+ * This needs a browser context
+ * You need to close the context to save the recorded file properly
  */
 
-public class NewMultiWindowPageDemo1 {
+public class VideoRecordingDemo1 {
 
-	static Page page;
-
-	public static void main(String[] args) {
-
+public static void main(String[] args) {
+		
 		String url = "https://freelance-learn-automation.vercel.app/login";
-
+		
 		Playwright playwright = Playwright.create();
 		Browser browser = playwright.chromium().launch(new LaunchOptions().setSlowMo(1000).setHeadless(false));
-
+		
+		
 		/*
 		 * demo - actions
 		 */
 
-		BrowserContext context = browser.newContext();
+		//start recording for the context 
+		BrowserContext context = browser.newContext(new Browser.NewContextOptions()
+				.setRecordVideoDir(Paths.get("src/test/resources/videos/"))
+				.setRecordVideoSize(640, 480));
 		
-		page = context.newPage();
+		Page page = context.newPage();
 		
 		page.navigate(url);
 		
@@ -53,7 +53,7 @@ public class NewMultiWindowPageDemo1 {
 		for(int i=0; i<allLinks.count(); i++) {
 			allLinks.nth(i).click();
 		}
-		
+	
 		List<Page> allPages = context.pages();
 		
 		for(Page p:allPages) {
@@ -73,7 +73,7 @@ public class NewMultiWindowPageDemo1 {
 		
 		context.close();
 		browser.close();
-	
+				
 	}
 
 }

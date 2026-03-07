@@ -16,6 +16,8 @@ test-output/
 !automation.log
 /traces
 *.zip
+*.webm
+*.png
 
 # ===== Allure =====
 allure-results/
